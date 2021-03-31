@@ -21,10 +21,17 @@ client.connect(err => {
       console.log('add Product', newProduct);
       productCollection.insertOne(newProduct)
       .then(result => {
-          console.log('insertedCount', result.insertedCount);
           res.send(result.insertedCount> 0);
       })
   })
+
+  app.get('/products', (req, res) => {
+    productCollection.find()
+    .toArray( (err, productInfo) => {
+        res.send(productInfo);
+    })
+  })
+
 });
 
 
