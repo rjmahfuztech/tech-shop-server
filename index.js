@@ -38,9 +38,9 @@ client.connect(err => {
       })
   })
   // get product by search
-  app.get('/productBySearch', (req, res) => {
-    const searchProduct = req.query.search;
-    productCollection.find({name: {$regex: searchProduct}})
+  app.get('/searchProduct', (req, res) => {
+    const search = req.query.search;
+    productCollection.find({name: {$regex: search}})
       .toArray((err, result) => {
         res.send(result);
       })
